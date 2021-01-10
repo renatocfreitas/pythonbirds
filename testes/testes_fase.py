@@ -165,18 +165,18 @@ class FaseTestes(TestCase):
                          'Sem porco ativo, o jogo deveria acabar com vitória')
 
     def teste_lancar_passaro_sem_erro_quando_nao_existe_passaro(self):
-        passaros = [PassaroFake(1, 1) for _ in range(2)]
-        fase = Fase()
-        fase.adicionar_passaro(*passaros)
-        self.assertFalse(passaros[0].foi_lancado())
+        passaros = [PassaroFake(1, 1) for _ in range(2)] # insiro 2 passaros
+        fase = Fase()                                    # crio minha fase
+        fase.adicionar_passaro(*passaros)                # adiciono os 2 passaros na minha fase
+        self.assertFalse(passaros[0].foi_lancado())      # me certifico que os 2 passaros nao foram lancados
         self.assertFalse(passaros[1].foi_lancado())
-        fase.lancar(90, 1)
-        fase.lancar(45, 3)
+        fase.lancar(90, 1)                               # lanco um passaro da primeira vez
+        fase.lancar(45, 3)                               # lanco um passaro da segunda  vez
         fase.lancar(31,
-                    5)  # testando que lançar passaros depios de todos
+                    5)  # testando que lançar passaros depois de todos
         # lançados não causa erro
 
-        self.assertTrue(passaros[0].foi_lancado())
+        self.assertTrue(passaros[0].foi_lancado())       # me certificando que os 2 passaros foram lancados
         self.assertTrue(passaros[1].foi_lancado())
 
     def teste_intervalo_de_colisao_padrao(self):
@@ -184,11 +184,11 @@ class FaseTestes(TestCase):
         Método que testa se o intervalo de colisão da Fase é repassado aos
         atores. Padrão de intervalo é 1
         '''
-        fase = Fase()
-        passaro = PassaroFake(1, 1)
-        fase.adicionar_passaro(passaro)
-        porco = PorcoFake(2, 2)
-        fase.adicionar_porco(porco)
+        fase = Fase()                    # criada uma fase
+        passaro = PassaroFake(1, 1)      # um passaro fake na posicao 1, 1 eh criado
+        fase.adicionar_passaro(passaro)  # o passaro criado eh adicionado a fase
+        porco = PorcoFake(2, 2)          # um porco fake eh criado na posicao 2, 2
+        fase.adicionar_porco(porco)      # o porco eh adicionado a fase
         fase.calcular_pontos(0)
         self.assertTrue(passaro.colidir_executado)
         self.assertTrue(porco.colidir_executado)
