@@ -33,7 +33,7 @@ class AtorTestes(TestCase):
     def teste_ator_posicao(self):
         'Teste que verifica que o ator comum não deve se mover independente do tempo do jogo'
         ator = Ator()
-        x, y = ator.calcular_posicao(0)
+        x, y = ator.calcular_posicao(0) # calcular a posicao do ator no tempo = 0
         self.assertEqual(0, x)
         self.assertEqual(0, y)
 
@@ -148,10 +148,10 @@ class ObstaculoTestes(TestCase):
     """
     def teste_status(self):
         obstaculo = Obstaculo()
-        self.assertEqual('O', obstaculo.caracter())
-        outro_ator_na_mesma_posicao = Ator()
-        obstaculo.colidir(outro_ator_na_mesma_posicao)
-        self.assertEqual(' ', obstaculo.caracter())
+        self.assertEqual('O', obstaculo.caracter())    # testa quando o obstaculo esta ativo 'O'
+        outro_ator_na_mesma_posicao = Ator()           # colide com outro ator que esta na mesma posicao
+        obstaculo.colidir(outro_ator_na_mesma_posicao) # entao deve trocar para o caracter DESTRUIDO ' '
+        self.assertEqual(' ', obstaculo.caracter())    # testa quando o obstaculo esta destruido ' '
 
 
 class PorcoTestes(TestCase):
