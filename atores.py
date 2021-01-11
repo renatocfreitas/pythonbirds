@@ -142,3 +142,5 @@ class PassaroAmarelo(Passaro):
 
 class PassaroVermelho(Passaro):
     _caracter_ativo = 'V'
+    _caracter_destruido = 'v' # caracter destruido para passaro vermelho
+    velocidade_escalar = 20   # de acordo com o teste, a veloc escalar do passaro vermelho eh 20
